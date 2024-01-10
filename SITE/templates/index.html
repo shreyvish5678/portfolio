@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Faces Generator</title>
+    <style>
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin: 45px;
+            font: 75px "Source Code Pro", monospace;
+            text-decoration: underline;
+        }
+
+        body {
+            background-color: #000;
+        }
+
+        .button {
+            background-color: #fff;
+            width: 350px;
+            height: 75px;
+            text-align: center;
+            margin-left: 650px;
+            border: 5px solid #808080;
+            font: 30px "Source Code Pro", monospace;
+            border-radius: 15px;
+        }
+
+        .button:hover {background-color: #858d84}
+
+        .button:active {
+        background-color: #ffffff;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+        }
+
+        img {
+            display: block;
+            width: 448px;
+            height: 448px;
+            margin-left: 600px;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Dog Faces Generator</h1>
+    <button id="btn" class="button">Generate!</button>
+    <img src="data:image/png;base64,{{ image_data }}" alt="Python Image">
+    <script src="script.js"></script>
+</body>
+</html>
