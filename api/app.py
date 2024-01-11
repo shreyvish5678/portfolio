@@ -27,7 +27,8 @@ def array_to_base64_image(array):
     return base64.b64encode(buffered.getvalue()).decode('utf-8')
 
 def generate_image():
-    generator = tf.keras.models.load_model("C:/Users/shrey/PORTFOLIO_SITE/MODELS/human_face_generator.h5 ")
+    #C:/Users/shrey/PORTFOLIO_SITE
+    generator = tf.keras.models.load_model("../MODELS/human_face_generator.h5 ")
     noise = tf.random.normal(shape=(1, 100), mean=0.0, stddev=1.0)
     generated_image = generator(noise, training=False)[0]
     generated_image = generated_image * 127.5 + 127.5
