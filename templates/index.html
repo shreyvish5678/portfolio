@@ -8,9 +8,10 @@
 <body>
     <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; flex-direction: column;">
         <h1>Human Faces Generator</h1>
-        <img id="noise-img" alt="Noise Image" width="100px" height="100px">
-        <img src="data:image/png;base64,{{ image_data }}" alt="Generated Image" width="448px" style="margin-top: 10px;">
-        <button id="btn" class="button" style="margin-top: 40px;">Generate!</button>
+        <img src="data:image/png;base64,{{ noise }}" alt="Noise" width="768px" height="24px">
+        <img src="assets/arrow.jpg" alt="Arrow" width="80px" style="margin-top: 20px;">
+        <img src="data:image/png;base64,{{ image_data }}" alt="Generated Image" width="288px" style="margin-top: 20px;">
+        <button id="btn" class="button" style="margin-top: 20px;">Generate!</button>
     </div>
     <script src="script.js"></script>
 </body>
