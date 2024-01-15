@@ -3,9 +3,11 @@ import base64
 from flask import Flask, render_template, jsonify
 import warnings
 import tensorflow as tf
+from flask_limiter import Limiter
 from PIL import Image
 import numpy as np
 app = Flask(__name__, static_url_path='', static_folder='templates')
+limiter = Limiter(app, key_func=lambda: 'global', storage_uri="memory://")
 warnings.filterwarnings("ignore", category=DeprecationWarning, module="tensorflow")
 interpreter = tf.lite.Interpreter(model_path='MODELS/human_face_generator.tflite')
 interpreter.allocate_tensors()
@@ -37,6 +39,7 @@ def generate_noise():
     return noise
 
 @app.route('/')
+@limiter.limit("5 per minute")
 def index():
     noise = generate_noise()
     array = generate_image(noise)
@@ -46,6 +49,7 @@ def index():
     return render_template('index.html', image_data=image_data, noise=noise_data)
 
 @app.route('/generate')
+@limiter.limit("5 per minute")
 def generate():
     noise = generate_noise()
     array = generate_image(noise)
@@ -55,4 +59,4 @@ def generate():
     return jsonify({"image_data": image_data, "noise": noise_data})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=3000)
