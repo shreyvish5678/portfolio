@@ -8,5 +8,12 @@
       "sleepApplication": false,
       "restartPolicyType": "ON_FAILURE",
       "restartPolicyMaxRetries": 10
+    },
+    "lang": {
+      "providers": ["python"]
+    },
+    "requirements": {
+      "file": "requirements.txt"
     }
   }
+  

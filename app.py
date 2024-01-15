@@ -1,14 +1,12 @@
 import io
 import base64
 from flask import Flask, render_template, jsonify
-import warnings
 import tensorflow as tf
 from flask_limiter import Limiter
 from PIL import Image
 import numpy as np
 app = Flask(__name__, static_url_path='', static_folder='templates')
 limiter = Limiter(app, key_func=lambda: 'global', storage_uri="memory://")
-warnings.filterwarnings("ignore", category=DeprecationWarning, module="tensorflow")
 interpreter = tf.lite.Interpreter(model_path='MODELS/human_face_generator.tflite')
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
