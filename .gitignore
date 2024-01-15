@@ -3,3 +3,4 @@
 /OTHER_ASSETS
 templates/out.css
 /node_modules
+__pycache__/
