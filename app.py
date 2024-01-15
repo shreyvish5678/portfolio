@@ -1,11 +1,12 @@
 import io
 import base64
 from flask import Flask, render_template, jsonify
+import warnings
 import tensorflow as tf
 from PIL import Image
 import numpy as np
 app = Flask(__name__, static_url_path='', static_folder='templates')
-import matplotlib.pyplot as plt
+warnings.filterwarnings("ignore", category=DeprecationWarning, module="tensorflow")
 @app.route('/')
 def index():
     noise = generate_noise()
