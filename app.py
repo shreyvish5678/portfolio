@@ -5,7 +5,7 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 app = Flask(__name__, static_url_path='', static_folder='templates')
-
+import matplotlib.pyplot as plt
 @app.route('/')
 def index():
     noise = generate_noise()
@@ -32,6 +32,7 @@ def array_to_base64_image(array):
     return base64.b64encode(buffered.getvalue()).decode('utf-8')
 
 def generate_image(noise):
+    noise = tf.reshape(noise, shape=(1, 100))
     generator = tf.keras.models.load_model('MODELS/human_face_generator.h5')
     generated_image = generator(noise, training=False)[0]
     generated_image = generated_image * 127.5 + 127.5
@@ -44,7 +45,7 @@ def normalize_to_0_255(tensor):
     return normalized_tensor
 
 def generate_noise():
-    noise = tf.random.normal(shape=(1, 100), mean=0.0, stddev=1.0)
+    noise = tf.random.normal(shape=(10, 10), mean=0.0, stddev=1.0)
     return noise
 
 if __name__ == '__main__':
